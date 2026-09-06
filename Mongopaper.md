@@ -130,7 +130,7 @@
   </tr>
   <tr>
     <td><strong>Symbol</strong></td>
-    <td>$MG</td>
+    <td>$Mongo</td>
   </tr>
   <tr>
     <td><strong>Total Supply</strong></td>
@@ -138,7 +138,7 @@
   </tr>
   <tr>
     <td><strong>Network</strong></td>
-    <td>BNB Chain (Low Gas, High Throughput)</td>
+    <td>Solana (Low Gas, High Throughput)</td>
   </tr>
 </table>
 
@@ -431,7 +431,7 @@
   </tr>
   <tr>
     <td><strong>符号</strong></td>
-    <td>$MG</td>
+    <td>$Mongo</td>
   </tr>
   <tr>
     <td><strong>发行总量</strong></td>
@@ -439,7 +439,7 @@
   </tr>
   <tr>
     <td><strong>发行网络</strong></td>
-    <td>BNB Chain（低 Gas，高吞吐）</td>
+    <td>Solana（低 Gas，高吞吐）</td>
   </tr>
 </table>
 
