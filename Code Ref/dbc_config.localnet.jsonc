@@ -105,14 +105,14 @@
       "max_buying_cap": 20000,
       "execution_price": 0.0015,
       "per_wallet_soft_cap_min": 200,
-      "per_wallet_soft_cap_max": 400,
-      "deposit_window_days": 4,
+      "per_wallet_soft_cap_max": 1000,
+      "deposit_window_days": 3,
       "fill_window_hours": 2,
       "batches": 10,
       "batch_interval_minutes": 6,
       "start_vesting_days": 7,
       "end_vesting_days": 30,
-      "escrow_fee_bps": 30,
+      "escrow_fee_bps": 0,
       "cranker_address": "HJCaaNxQxjLGaNjfXBJmuXvY1EKFCtmYPB72nNedPZ8v", // [!] 暂用创建者地址
       "whitelist_cranker": true
     }
