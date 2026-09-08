@@ -32,21 +32,21 @@
     },
 
     // --- 3.3 费用配置 ---
-    "fee": {
-      "baseFeeParams": {
-        "baseFeeMode": 0,
-        "feeSchedulerParam": {
-          "startingFeeBps": 30,
-          "endingFeeBps": 30,
-          "numberOfPeriod": 0,
-          "totalDuration": 0
-        }
-      },
-      "dynamicFeeEnabled": false,
-      "collectFeeMode": 0,
-      "creatorTradingFeePercentage": 100,
-      "poolCreationFee": 0,
-      "enableFirstSwapWithMinFee": false
+   "fee": {
+  "baseFeeParams": {
+    "baseFeeMode": 2,
+    "feeSchedulerParam": {
+      "startingFeeBps": 9000,
+      "endingFeeBps": 30,
+      "numberOfPeriod": 60,
+      "totalDuration": 60
+    }
+  },
+  "dynamicFeeEnabled": true,
+  "collectFeeMode": 0,
+  "creatorTradingFeePercentage": 100,
+  "poolCreationFee": 0,
+  "enableFirstSwapWithMinFee": false
     },
 
     // --- 3.4 迁移配置 ---
