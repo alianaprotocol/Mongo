@@ -13,7 +13,7 @@
   "quoteMint": "4u61WWdqSme4HcQSTrJucF7xSBmD7JcjWHfnUrF1QzmF",  // [!] 你创建的测试 USDC
 
   // ============================================================
-  // 3.  DBC 核心配置（与之前完全一致）
+  // 3.  DBC 核心配置
   // ============================================================
   "dbcConfig": {
     // --- 3.1 曲线构建（三段式：0.001→0.003→0.006→0.01） ---
@@ -44,7 +44,7 @@
       },
       "dynamicFeeEnabled": false,
       "collectFeeMode": 0,
-      "creatorTradingFeePercentage": 50,
+      "creatorTradingFeePercentage": 100,
       "poolCreationFee": 0,
       "enableFirstSwapWithMinFee": false
     },
