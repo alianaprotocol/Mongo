@@ -1,0 +1,153 @@
+{
+  // ============================================================
+  // 1.  基础配置（Localnet）
+  // ============================================================
+  "rpcUrl": "http://localhost:8899",          // [!] 指向本地验证器
+  "dryRun": false,
+  "keypairFilePath": "studio/keypair.json",   // [!] 使用 meteora-invent 生成的密钥对
+  "computeUnitPriceMicroLamports": 100000,
+
+  // ============================================================
+  // 2.  Quote Mint（Localnet 自定义测试代币）
+  // ============================================================
+  "quoteMint": "4u61WWdqSme4HcQSTrJucF7xSBmD7JcjWHfnUrF1QzmF",  // [!] 你创建的测试 USDC
+
+  // ============================================================
+  // 3.  DBC 核心配置（与之前完全一致）
+  // ============================================================
+  "dbcConfig": {
+    // --- 3.1 曲线构建（三段式：0.001→0.003→0.006→0.01） ---
+    "buildCurveMode": 5,
+    "prices": [0.001, 0.003, 0.006, 0.01],
+    "liquidityWeights": [1, 3, 6],
+
+    // --- 3.2 代币配置 ---
+    "token": {
+      "totalTokenSupply": 970000000, // DBC 将铸造 9.7 亿枚完整代币
+      "tokenBaseDecimal": 9,
+      "tokenQuoteDecimal": 6,
+      "tokenType": 0, // SPL Token
+      "tokenAuthorityOption": 0, // 保留更新权限
+      "leftover": 0
+    },
+
+    // --- 3.3 费用配置 ---
+    "fee": {
+      "baseFeeParams": {
+        "baseFeeMode": 0,
+        "feeSchedulerParam": {
+          "startingFeeBps": 30,
+          "endingFeeBps": 30,
+          "numberOfPeriod": 0,
+          "totalDuration": 0
+        }
+      },
+      "dynamicFeeEnabled": false,
+      "collectFeeMode": 0,
+      "creatorTradingFeePercentage": 50,
+      "poolCreationFee": 0,
+      "enableFirstSwapWithMinFee": false
+    },
+
+    // --- 3.4 迁移配置 ---
+    "migration": {
+      "migrationOption": 1, // DAMM v2
+      "migrationFeeOption": 3,
+      "migrationFee": {
+        "feePercentage": 1000, // 10%
+        "creatorFeePercentage": 0
+      },
+      "migratedPoolFee": {
+        "collectFeeMode": 0,
+        "dynamicFee": 1,
+        "poolFeeBps": 30,
+        "compoundingFeeBps": 0,
+        "baseFeeMode": 4,
+        "marketCapFeeSchedulerParams": {
+          "endingBaseFeeBps": 30,
+          "numberOfPeriod": 100,
+          "priceMultiple": 1000,
+          "schedulerExpirationDuration": 86400
+        }
+      }
+    },
+
+    // --- 3.5 流动性分配（100% 永久锁定）---
+    "liquidityDistribution": {
+      "partnerLiquidityPercentage": 0,
+      "creatorLiquidityPercentage": 0,
+      "partnerPermanentLockedLiquidityPercentage": 50,
+      "creatorPermanentLockedLiquidityPercentage": 50
+    },
+
+    // --- 3.6 Locked Vesting ---
+    "lockedVesting": {
+      "totalLockedVestingAmount": 0,
+      "numberOfVestingPeriod": 0,
+      "cliffUnlockAmount": 0,
+      "totalVestingDuration": 0,
+      "cliffDurationFromMigrationTime": 0
+    },
+
+    // --- 3.7 激活类型 ---
+    "activationType": 1, // 时间戳
+
+    // --- 3.8 地址配置（使用 studio/keypair.json 对应的公钥）---
+    "leftoverReceiver": "HJCaaNxQxjLGaNjfXBJmuXvY1EKFCtmYPB72nNedPZ8v", // [!] 你的 Localnet 钱包公钥
+    "feeClaimer": "HJCaaNxQxjLGaNjfXBJmuXvY1EKFCtmYPB72nNedPZ8v",   // [!] 同上
+
+    // ============================================================
+    // ★★★ Alpha Vault 关联配置（保持不变）★★★
+    // ============================================================
+    "has_alpha_vault": true,
+    "alpha_vault_config": {
+      "mode": "ProRata",
+      "max_buying_cap": 20000,
+      "execution_price": 0.0015,
+      "per_wallet_soft_cap_min": 200,
+      "per_wallet_soft_cap_max": 400,
+      "deposit_window_days": 4,
+      "fill_window_hours": 2,
+      "batches": 10,
+      "batch_interval_minutes": 6,
+      "start_vesting_days": 7,
+      "end_vesting_days": 30,
+      "escrow_fee_bps": 30,
+      "cranker_address": "HJCaaNxQxjLGaNjfXBJmuXvY1EKFCtmYPB72nNedPZ8v", // [!] 暂用创建者地址
+      "whitelist_cranker": true
+    }
+  },
+
+  // ============================================================
+  // 4.  池子创建配置（DBC 池子参数）
+  // ============================================================
+  "dbcPool": {
+    "creator": "HJCaaNxQxjLGaNjfXBJmuXvY1EKFCtmYPB72nNedPZ8v", // [!] 你的 Localnet 钱包公钥
+    "name": "Mongo",
+    "symbol": "MONGO",
+    "metadata": {
+      "image": "",
+      "description": "",
+      "website": "",
+      "twitter": "",
+      "telegram": ""
+    }
+  },
+
+  // ============================================================
+  // 5.  Swap 配置（仅用于 dbc-swap 命令）
+  // ============================================================
+  "dbcSwap": {
+    "amountIn": 1.0,
+    "slippageBps": 100,
+    "swapBaseForQuote": false,
+    "referralTokenAccount": null
+  },
+
+  // ============================================================
+  // 6.  转移 Creator 权限（如需）
+  // ============================================================
+  "dbcTransferPoolCreator": {
+    "newCreator": "HJCaaNxQxjLGaNjfXBJmuXvY1EKFCtmYPB72nNedPZ8v" // 暂不转移
+  }
+}
